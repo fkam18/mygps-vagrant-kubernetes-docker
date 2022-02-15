@@ -1,0 +1,5 @@
+#!/bin/bash
+perl -i -p0e 's/## microk8s nodes begin.*## microk8s nodes end//s' /etc/hosts
+echo '## microk8s nodes begin' >> /etc/hosts
+microk8s kubectl get nodes -o wide | awk '{ print $6 " " $1 }' | tail -n +2 | grep -v $(hostname)  >> /etc/hosts
+echo '## microk8s nodes end' >> /etc/hosts

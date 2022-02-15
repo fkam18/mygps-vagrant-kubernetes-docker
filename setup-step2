@@ -1,0 +1,10 @@
+#!/bin/bash
+# need to manually add nodes first
+# vagrant ssh node1 -c "microk8s enable dns; microk8s add-node"
+vagrant upload ./fix-dns node1
+vagrant ssh node1 -c "sudo ./fix-dns"
+vagrant upload ./fix-dns node2
+vagrant ssh node2 -c "sudo ./fix-dns"
+vagrant upload ./fix-dns node3
+vagrant ssh node3 -c "sudo ./fix-dns"
+

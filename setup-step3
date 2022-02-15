@@ -1,0 +1,5 @@
+#!/bin/bash
+vagrant upload mygps.yaml node1
+vagrant upload nginx-lb.yaml node1
+vagrant ssh node1 -c "microk8s kubectl apply -f mygps.yaml"
+vagrant ssh node1 -c "microk8s kubectl apply -f nginx-lb.yaml"

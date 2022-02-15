@@ -1,0 +1,12 @@
+#!/bin/bash
+
+vagrant ssh node1 -c "echo 'alias k=\"microk8s kubectl\"' >> ~/.profile"
+vagrant ssh node2 -c "echo 'alias k=\"microk8s kubectl\"' >> ~/.profile"
+vagrant ssh node3 -c "echo 'alias k=\"microk8s kubectl\"' >> ~/.profile"
+
+vagrant ssh node1 -c "microk8s enable dns ingress metallb:192.168.121.3-192.168.121.6"
+#vagrant ssh node2 -c "microk8s enable dns ingress metallb:192.168.121.3-192.168.121.6"
+#vagrant ssh node3 -c "microk8s enable dns ingress metallb:192.168.121.3-192.168.121.6"
+vagrant ssh node1  -c "sudo shutdown -r now"
+vagrant ssh node2  -c "sudo shutdown -r now"
+vagrant ssh node3  -c "sudo shutdown -r now"

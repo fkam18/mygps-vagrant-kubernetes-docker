@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mygps
+spec:
+  selector:
+    matchLabels:
+      app: mygps
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: mygps
+    spec:
+      containers:
+      - name: mygps
+        image: fkam18/mygps
+        ports:
+        - containerPort: 80
